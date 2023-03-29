@@ -5,16 +5,14 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     #region Event Dispatchers
-    public delegate void Vector2InputEvent(Vector2 direction);
-
-    public static Vector2InputEvent MoveEvent;
-
     public delegate void ButtonInputEvent(ButtonInputContext context);
 
     public static ButtonInputEvent JumpButtonPressed;
     #endregion
 
     public static InputManager instance;
+
+    public static Vector2 MoveInput = Vector2.zero;
 
     #region Init Functions
     private void Awake()
@@ -41,7 +39,8 @@ public class InputManager : MonoBehaviour
 
     private void CheckMoveInput()
     {
-
+        MoveInput.x = Input.GetAxis("Horizontal");
+        MoveInput.y = Input.GetAxis("Vertical");
     }
 }
 
